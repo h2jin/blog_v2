@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class Usercontroller {
 	
-	@GetMapping({"/", ""})
-	public String home() {
-		return "home";
-	}
+//	@GetMapping({"/", ""})
+//	public String home() {
+//		return "home";
+//	}
 	
 	@GetMapping("/join")
 	public String join() {
@@ -19,6 +19,16 @@ public class Usercontroller {
 	@GetMapping("/login")
 	public String login() {
 		return "login";
+	}
+	
+	@GetMapping("/board/saveForm")
+	public String saveForm() {
+		return "board/saveForm";
+	}
+	
+	@GetMapping("/board/updateForm")
+	public String updateForm() {
+		return "board/updateForm";
 	}
 
 }

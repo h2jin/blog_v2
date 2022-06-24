@@ -18,16 +18,22 @@ public class UserApiController {
 	private UserService userService;
 	
 	@PostMapping("/api/user")
-	@ResponseBody
 	public String save(@RequestBody User user) {
 		int result = userService.save(user);
+		System.out.println(" 회원가입  save 호출 :  " + result );
 		return "ok";
 	}
 	
 	@PostMapping("/api/user/login")
+	@ResponseBody
 	public String ligin(@RequestBody User user, HttpSession session) {
-		
-		return "";
+		User principal = userService.login(user);
+		if(principal != null) {
+			System.out.println("세션에 유저정보 저장됨");
+			session.setAttribute("principal", principal);
+		}
+		System.out.println(principal);
+		return "ok";
 	}
 	
 }
